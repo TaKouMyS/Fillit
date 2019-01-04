@@ -6,14 +6,14 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 17:51:21 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/01/03 18:25:54 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/01/04 13:26:21 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
 
-void	ft_display_array2(char **tab)
+void	ft_display_array2(char **tab)		//Affiche un tableau
 {
 	int		i;
 	int		j;
@@ -34,7 +34,7 @@ void	ft_display_array2(char **tab)
 	}
 }
 
-int		ft_verif(char **tab)
+int		ft_verif(char **tab)	//verifie le nombre de liaisons, retourne -1 si fichier invalide
 {
 	int		i;
 	int		x;
@@ -45,10 +45,44 @@ int		ft_verif(char **tab)
 	x = 0;
 	y = 0;
 	liaisons = 0;
-	while (tab[x] != '\0')
+	while (tab[x] != '\0' && x < 4)
 	{
-		if (tab[x][y] == '#' && (tab[x][y + 1] == '#' || tab[x + 1][y] == '#'))
+		if (tab[x][y] == '#' && (tab[x][y + 1] == '#' && tab[x + 1][y] == '#'))
+			liaisons = liaisons + 4;
+		else if (tab[x][y] == '#' && (tab[x][y + 1] == '#' || tab[x + 1][y] == '#'))
 			liaisons = liaisons + 2;
+		//printf("liaisons = %d, tab[%d][%d] = %c\n",liaisons,x,y,tab[x][y]);
+		y++;
+		if (y == 5)
+		{
+			x++;
+			y = 0;
+		}
+	}
+	//printf("x = %d, y = %d\n",x,y);
+	//printf("liaisons = %d, tab[%d][%d] = %d\n", liaisons, x, y, tab[x][y]);
+	if (liaisons < 6 || liaisons > 8)
+		return (-1);
+	return (0);
+}
+
+int		ft_verifbloc(char **tab)		//verifie bon nombre de # et si les . et # et \n sont au bon endroit dans un bloc, renvoie -1 si pas bon
+{
+	int		x;
+	int		y;
+	int		compteur;
+
+	x = 0;
+	y = 0;
+	compteur = 0;
+	while (tab[x] != '\0' && x < 4)
+	{
+		if (tab[x][y] == '#')
+			compteur++;
+		if ((y >= 0 && y <= 3) && (tab[x][y] != '.' && tab[x][y] != '#'))
+			return (-1);
+		if (y == 4 && tab[x][y] != '\n')
+			return (-1);
 		if (y == 5)
 		{
 			x++;
@@ -56,14 +90,12 @@ int		ft_verif(char **tab)
 		}
 		y++;
 	}
-	printf("x = %d, y = %d\n",x,y);
-	printf("liaisons = %d, tab[%d][%d] = %d\n", liaisons, x, y, tab[x][y]);
-	if (liaisons < 6 || liaisons > 8)
+	if (compteur != 4)
 		return (-1);
 	return (0);
 }
 
- char	**ft_stockarray(char *str)
+char	**ft_stockarray(char *str)		//stock les 20 premiers caracteres de str dans un double tableau, retourne null si malloc fail
 {
 	char	**tab;
 	int		i;
@@ -98,16 +130,17 @@ int		ft_verif(char **tab)
 	y = 0;
 	x++;
 	tab[x][y] = '\0';
+	if (ft_verifbloc(tab) == -1)
+		return (NULL);
 	ft_display_array2(tab);
+	//printf("ma fonction verifbloc renvoie : %d\n", ft_verifbloc(tab));
 	printf("ma fonction verif renvoie : %d\n", ft_verif(tab));
 	//if (ft_verif(tab) == -1)
 	//	return (NULL);
-	// if (ft_verif(tab) == -1)
-	// 	return (NULL);
 	return (tab);
 }
 
-char	*ft_readfile(const int fd)
+char	*ft_readfile(const int fd)		//lis le fichier et stock dans str, retourne null si fichier invalide
 {
 	ssize_t		size;
 	char		buff[547];
@@ -135,7 +168,7 @@ char	*ft_readfile(const int fd)
 }
 
 #include <stdio.h>
-int		main(int argc, char **argv)
+int		main(int argc, char **argv)		//Appel les fonction si bon nombre d'arguments
 {
 	int		fd;
 	char	*str;
