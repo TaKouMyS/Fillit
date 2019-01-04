@@ -1,5 +1,7 @@
 # fillit
 
+Fichier auteur: passe sans ?? metre login1:login2 ??
+
 check_size : verifie si le fichier est pas trop grand
 
 check_file : verifie si fichier valide (mais pas sa taille)
