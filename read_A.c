@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   read_A.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 15:34:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/01/03 18:35:09 by amamy            ###   ########.fr       */
+/*   Updated: 2019/01/04 17:15:42 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,82 +23,107 @@ char	*ft_readfile(const int fd)
 	if (size > 545 || size < 20)
 		return (NULL);
 	if (size)
-	buff[size] = '\0';
+		buff[size] = '\0';
 	if (!(str = ft_strndup(buff, size + 1)))
 		return (NULL);
 	return (str);
 }
 
-int	ft_check_line(char *str)
+int		ft_check_line(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (i < 4)
 	{
-	//	printf("str[%d] :%c\n", i, str[i]);
 		if (str[i] != '.' && str[i] != '#')
 		{
 			return (-1);
 		}
 		i++;
 	}
-	if (str[4] != '\n')
+				ft_putstr("str :");
+				ft_putstr(str);
+				ft_putstr("\n");
+				printf("strlen : %zu\n", ft_strlen(str));
+	if (str[4] != '\n' && ft_strlen(str) != 4)
 	{
+		ft_putstr("licdiv");
 		return (-1);
 	}
-	return(0);
+	return (0);
 }
 
-int	ft_check_store(char *str)
+int		ft_check_tetri(char tetri[4][5])
+{
+	int	x;
+	int	y;
+	int	links;
+	int	nb_sharp;
+
+	x = 0;
+	y = 0;
+	nb_sharp = 0;
+	links = 0;
+	while ((y != 4 && x++ != 4))
+	{
+		if (tetri[y][x] == '#')
+		{
+			nb_sharp++;
+			if (x < 3 && tetri[y][x + 1] == '#')
+				links++;
+			if (y < 3 && tetri[y + 1][x] == '#')
+				links++;
+		}
+		if (x == 4 && y++ < 5)
+			x = 0;
+	}
+	if (nb_sharp != 4 || (links != 3 && links != 4))
+		return (-1);
+	return (0);
+}
+
+int		ft_check_store(char *str)
 {
 	int		line;
 	int		x;
-	char	tetri[4][6];
+	char	tetri[4][5];
 	char	*save_str;
 
 	save_str = str;
 	line = 0;
-	//while (ft_strlen(str) > 19) la vrai condition mais pour l'instant ca boucle
-	//while (line <4)
-//	{
+	while (ft_strlen(str) > 18)
+	{
 		while (line < 4)
 		{
+			//printf("str : |||%s|||\n", str);
 			if (ft_check_line(str) != 0)
 			{
 				return (-1);
 			}
-		//ft_strncpy(tetri[line], str, 5); v1 : mais pb, on teste en codant un truc sur mesure :
-		x = 0;
-		while (x < 5)
-		{
-			tetri[line][x] = str[x];
-			x++;
-			if (x == 5)
+/////////// DEBUT ///////// copie une ligne du tetri dans le tableau
+			x = 0;
+			while (x < 4)
 			{
-				tetri[line][x] = '\0';
+				tetri[line][x] = str[x];
+				x++;
+				if (x == 4)
+					tetri[line][x] = '\0';
 			}
+//////////////////// FIN /////////////
+			line++;
+			str = str + 5;
 		}
-	printf("tetri[%d]:%s:\n", line, tetri[line]);
-		line++;
-		str = str + 5;
+		line = 0;
+		if (str[0] != '\n' && ft_strlen(str) > 4)
+		{
+				ft_putstr("laaa");
+			return (-1);
 		}
-	//}
-///////////////////////////////
-/*
-	int x;
-	int y;
-
-	x = 0;
-	y = 0;
-	//while (tetri[y])
-	while (y < 4)
-	{
-		ft_putstr(tetri[y]);
-		ft_putchar('\n');
-		y++;
+		str++;
+		if (ft_check_tetri(tetri) != 0)
+			return (-1);
 	}
-*///////////////////////////////
 	return (0);
 }
 
@@ -125,7 +150,19 @@ int		main(int argc, char **argv)
 			ft_putstr("error");
 			return (0);
 		}
-
 	}
 	return (0);
 }
+
+/*
+**This is display only - TBR///////////////////
+**	int y;
+**	y = 0;
+**	//while (tetri[y])
+**	while (y < 4)
+**	{
+**		ft_putstr(tetri[y]);
+**		ft_putchar('\n');
+**		y++;
+**	}
+*/
