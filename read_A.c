@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 15:34:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/01/04 17:15:42 by amamy            ###   ########.fr       */
+/*   Updated: 2019/01/05 19:20:11 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,8 @@ int		ft_check_line(char *str)
 		}
 		i++;
 	}
-				ft_putstr("str :");
-				ft_putstr(str);
-				ft_putstr("\n");
-				printf("strlen : %zu\n", ft_strlen(str));
 	if (str[4] != '\n' && ft_strlen(str) != 4)
 	{
-		ft_putstr("licdiv");
 		return (-1);
 	}
 	return (0);
@@ -61,7 +56,7 @@ int		ft_check_tetri(char tetri[4][5])
 	int	links;
 	int	nb_sharp;
 
-	x = 0;
+	x = -1;
 	y = 0;
 	nb_sharp = 0;
 	links = 0;
@@ -76,10 +71,12 @@ int		ft_check_tetri(char tetri[4][5])
 				links++;
 		}
 		if (x == 4 && y++ < 5)
-			x = 0;
+			x = -1;
 	}
 	if (nb_sharp != 4 || (links != 3 && links != 4))
+	{
 		return (-1);
+	}
 	return (0);
 }
 
@@ -89,16 +86,22 @@ int		ft_check_store(char *str)
 	int		x;
 	char	tetri[4][5];
 	char	*save_str;
+	int		len;
 
 	save_str = str;
 	line = 0;
-	while (ft_strlen(str) > 18)
+	len = ft_strlen(str);
+	if (str[len - 2] != '.' && str[len - 2] != '#')
+		return (-1);
+	while ((len = ft_strlen(str)) > 1)
 	{
 		while (line < 4)
 		{
 			//printf("str : |||%s|||\n", str);
 			if (ft_check_line(str) != 0)
 			{
+		printf("str : |%s|\n", str);
+				ft_putstr("laaa");
 				return (-1);
 			}
 /////////// DEBUT ///////// copie une ligne du tetri dans le tableau
@@ -117,12 +120,14 @@ int		ft_check_store(char *str)
 		line = 0;
 		if (str[0] != '\n' && ft_strlen(str) > 4)
 		{
-				ft_putstr("laaa");
+			ft_putstr("laaa");
 			return (-1);
 		}
 		str++;
 		if (ft_check_tetri(tetri) != 0)
+		{	
 			return (-1);
+		}
 	}
 	return (0);
 }
@@ -151,6 +156,7 @@ int		main(int argc, char **argv)
 			return (0);
 		}
 	}
+	ft_putstr("VAAAALIIIIDDDDEEEE");
 	return (0);
 }
 
