@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 15:34:24 by amamy             #+#    #+#             */
-/*   Updated: 2019/01/05 19:20:11 by amamy            ###   ########.fr       */
+/*   Updated: 2019/01/08 11:00:20 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*ft_readfile(const int fd)
 	ssize_t		size;
 	char		buff[547];
 	char		*str;
+	int			len;
 
 	size = read(fd, buff, 546);
 	if (size > 545 || size < 20)
@@ -27,6 +28,9 @@ char	*ft_readfile(const int fd)
 	if (!(str = ft_strndup(buff, size + 1)))
 		return (NULL);
 	return (str);
+	len = ft_strlen(str);
+	if (str[len - 2] != '.' && str[len - 2] != '#')
+		return (NULL);
 }
 
 int		ft_check_line(char *str)
@@ -74,9 +78,7 @@ int		ft_check_tetri(char tetri[4][5])
 			x = -1;
 	}
 	if (nb_sharp != 4 || (links != 3 && links != 4))
-	{
 		return (-1);
-	}
 	return (0);
 }
 
@@ -89,45 +91,27 @@ int		ft_check_store(char *str)
 	int		len;
 
 	save_str = str;
-	line = 0;
-	len = ft_strlen(str);
-	if (str[len - 2] != '.' && str[len - 2] != '#')
-		return (-1);
 	while ((len = ft_strlen(str)) > 1)
 	{
-		while (line < 4)
+		line = -1;
+		while (++line < 4)
 		{
-			//printf("str : |||%s|||\n", str);
 			if (ft_check_line(str) != 0)
-			{
-		printf("str : |%s|\n", str);
-				ft_putstr("laaa");
 				return (-1);
-			}
-/////////// DEBUT ///////// copie une ligne du tetri dans le tableau
 			x = 0;
 			while (x < 4)
 			{
 				tetri[line][x] = str[x];
-				x++;
-				if (x == 4)
+				if (++x == 4)
 					tetri[line][x] = '\0';
 			}
-//////////////////// FIN /////////////
-			line++;
 			str = str + 5;
 		}
-		line = 0;
 		if (str[0] != '\n' && ft_strlen(str) > 4)
-		{
-			ft_putstr("laaa");
 			return (-1);
-		}
 		str++;
 		if (ft_check_tetri(tetri) != 0)
-		{	
 			return (-1);
-		}
 	}
 	return (0);
 }
