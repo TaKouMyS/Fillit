@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 13:09:22 by amamy             #+#    #+#             */
-/*   Updated: 2019/01/08 17:24:37 by amamy            ###   ########.fr       */
+/*   Updated: 2019/01/09 17:25:40 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,54 +87,73 @@ int		ft_check_tetri(char tetri[4][5])
 			x = -1;
 	}
 	if (nb_sharp != 4 || (links != 3 && links != 4))
-		return (-1);
-	return (0);
-}
-
-int		ft_check_line_store(char *str, char tetri[4][5], int line)
-{
-	int		x;
-
-	if (ft_check_line(str) != 0)
-		return (-1);
-	x = 0;
-	while (x < 4)
 	{
-		tetri[line][x] = str[x];
-		if (++x == 4)
-			tetri[line][x] = '\0';
+		ft_putstr("error check tetri\n");
+		return (-1);
 	}
 	return (0);
 }
 
+int		ft_check_line_store(char *str, char tetri[4][5], int len)
+{
+	int		x;
+	int		line;
+	char	*save_str;
+
+	save_str = str;
+	x = 0;
+	line = -1;
+	while (++line < 4)
+	{
+		if (ft_check_line(str) != 0)
+		{
+			ft_putstr("ici");
+		//	free(save_str);
+			return (-1);
+		}
+		while (x < 4)
+		{
+
+			tetri[line][x] = str[x];
+		//printf("str[%d] : |%c|\ntetri[%d][%d] : %c\n", x, str[x], line, x, tetri[line][x]);
+			if (++x == 4)
+				tetri[line][x] = '\0';
+		}
+		x = 0;
+		str = str + 5;
+	}
+len = ft_strlen(str);
+return (len);
+}
+
 int		ft_check(char *str)
 {
-	int		line;
 	char	tetri[4][5];
 	char	*save_str;
 	int		len;
 
+	len = 1;
 	save_str = str;
-	while ((len = ft_strlen(str)) != 0)
+	while (len != 0)
 	{
-		if (str[len] == '\0')
-			line = -1;
-		while (++line < 4)
+		//printf("str : |%s|\n", str);
+		//printf("str[20] : |%c|\n", str[20]);
+
+		if ((len = ft_check_line_store(str, tetri, len)) == -1)
 		{
-			if (ft_check_line_store(str, tetri, line) != 0)
-			{
-				free(save_str);
-				return (-1);
-			}
-			str = str + 5;
-		}
-		if ((str[0] != '\n' && ft_strlen(str) > 4) || (ft_check_tetri(tetri) != 0))
+			return (-1);
+		}			
+		//if ((str[20] != '\n' && len > 20))
+		ft_display(tetri);
+		ft_putchar('\n');
+		if ((str[20] != '\n' && len > 20) || (ft_check_tetri(tetri) != 0))
 		{
 			free(save_str);
 			return (-1);
 		}
 		if (str[0] != '\0')
-			str++;
+			str = str + 21;
 	}
+	free(save_str);
 	return (0);
 }
