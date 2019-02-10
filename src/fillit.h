@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 15:39:34 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/01/31 21:05:54 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/10 18:43:43 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ t_tetris		*ft_exit_check(char *save_str);
 t_tetris		*ft_exit_check2(t_tetris *begin, char *save_str);
 int				ft_create_map(size_t len, char **map);
 void			ft_display_and_free_map(char **map, t_tetris *tetris);
-int				ft_resize_map(char **map);
+int				ft_resize_map(char **map, int map_size);
 void			ft_clean_map(char **map);
-int				ft_can_place(t_tetris *t, char **map, t_point coo);
+int				ft_chkplace(t_tetris *t, char **map, t_point coo, int map_size);
 t_point			ft_coo(int x, int y);
-int				ft_move_tetri(t_tetris *t, char **map);
+int				ft_move_tetri(t_tetris *t, char **map, int map_size);
 int				ft_solve(t_tetris *t, t_tetris *begin, char **map);
 void			ft_free_map(char **map);
 char			**ft_allocate_map(char **map);

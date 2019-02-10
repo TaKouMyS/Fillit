@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:12:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/01/31 21:05:22 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/09 00:20:34 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_display_and_free_map(char **map, t_tetris *tetris)
 	ft_free_list_from_begin(tetris);
 }
 
-int		ft_resize_map(char **map)
+int		ft_resize_map(char **map, int map_size)
 {
 	int		x;
 	int		save_x;
@@ -64,7 +64,7 @@ int		ft_resize_map(char **map)
 		map[y][x] = '.';
 		x++;
 	}
-	return (0);
+	return (map_size + 1);
 }
 
 /*

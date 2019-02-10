@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 20:53:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/01 11:50:53 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/09 00:18:04 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,11 @@ char	*ft_read_file(const int fd)
 }
 
 /*
-** ft_allocate_map : 
+** ft_allocate_map :
 ** Just allocate the map for 20 char * using memalloc
 ** to put '\0' all arround the map.
 */
+
 char	**ft_allocate_map(char **map)
 {
 	int i;
