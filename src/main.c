@@ -6,12 +6,11 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 15:12:08 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/01/31 21:06:00 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/10 21:00:30 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 int		ft_usage(void)
 {

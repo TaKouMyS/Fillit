@@ -6,12 +6,11 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:13:24 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/10 18:57:30 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/10 21:00:21 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 /*
 ** ft_verif_all_tetri :
@@ -41,7 +40,7 @@ void	ft_place_tetri(int x, int y, t_tetris *tetris, char **map)
 
 int		ft_move_tetri(t_tetris *t, char **map, int map_size)
 {
-	int		ret;
+	int	ret;
 
 	map[(t->a.y) + (t->pos.y)][(t->a.x) + (t->pos.x)] = '.';
 	map[(t->b.y) + (t->pos.y)][(t->b.x) + (t->pos.x)] = '.';
@@ -73,9 +72,9 @@ int		ft_chkplace(t_tetris *t, char **map, t_point coo, int map_size)
 			|| ((map_size < ((coo.x) + t->width))))
 		{
 			coo.x = -1;
-			coo.y++;
+			++coo.y;
 		}
-		coo.x++;
+		++coo.x;
 	}
 }
 

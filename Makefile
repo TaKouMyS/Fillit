@@ -6,14 +6,15 @@
 #    By: amamy <amamy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/02/07 20:06:16 by amamy            ###   ########.fr        #
+#    Updated: 2019/02/10 22:48:46 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 CC = @clang
 CFLAGS = -Wall -Werror -Wextra 
-OBJDIR = src
+OBJDIR = obj
+SRCDIR = src
 SRCS =	main.c				\
 		read_and_check.c	\
 		parsing.c			\
@@ -38,19 +39,24 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) libft/libft.a -o $(NAME)
 	@printf "[$(_GREEN)✓$(_END)]\n"
 
-%.o: %.c
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR) :
+	@mkdir $@
+
+$(OBJ) : | $(OBJDIR)
 
 clean:
 	@printf "Clean     ...:"
 	@cd libft && make clean
-	@rm -f $(OBJ)
+	@rm -rf $(OBJDIR)
 	@printf "[$(_YELLOW)✓$(_END)]\n"
 
 fclean: clean
 	@printf "fclean    ...:"
 	@cd libft && rm -f libft.a
-	@rm -f $(OBJ)$(NAME)
+	@rm -f $(NAME)
 	@printf "[$(_BLUE)✓$(_END)]\n"
 
 re: fclean all clean

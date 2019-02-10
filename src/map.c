@@ -6,14 +6,13 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:12:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/09 00:20:34 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/10 20:57:00 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
-int		ft_sqrt(int nb)
+int		ft_sqrt_map(int nb)
 {
 	int racine;
 
@@ -81,7 +80,7 @@ int		ft_create_map(size_t len, char **map)
 
 	y = 0;
 	x = 0;
-	square_size = (ft_sqrt((len / 20.5) * 4));
+	square_size = (ft_sqrt_map((len / 20.5) * 4));
 	while (y < (square_size))
 	{
 		map[y][x++] = '.';
