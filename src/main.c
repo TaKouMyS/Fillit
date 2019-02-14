@@ -6,14 +6,15 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 15:12:08 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/14 11:51:10 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/02/14 13:53:16 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_usage(void)
+int		ft_usage(char **map)
 {
+	ft_free_map(map);
 	ft_putstr("usage: fillit target_file\n");
 	return (0);
 }
@@ -38,7 +39,7 @@ int		main(int argc, char **argv)
 		return (1);
 	tetris = NULL;
 	if (argc != 2)
-		return (ft_usage());
+		return (ft_usage(map));
 	else
 	{
 		if (((((fd = open(argv[1], O_RDONLY)) == -1) \
