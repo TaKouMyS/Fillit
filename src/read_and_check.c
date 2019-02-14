@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_and_check.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 15:11:55 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/10 21:00:42 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/14 14:08:46 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 /*
 ** ft_check line :
-** Checks the first 4 chars of the given char * to verify thhey are '.' or '#'.
-** if the 5th char isn't a '\n' th efonction return false as well.
+** Checks the first 4 chars of the given char * to verify they are '.' or '#'.
+** if the 5th char isn't a '\n' the function return false as well.
 */
 
 int				ft_check_line(char *str)
@@ -36,7 +36,7 @@ int				ft_check_line(char *str)
 
 /*
 ** ft_check_tetri :
-** Checks if a tetri contains the right number of '#' and that  they are
+** Checks if a tetri contains the right number of '#' and that they are
 ** next to each other.
 */
 
@@ -102,7 +102,7 @@ int				ft_check_line_store(char *str, char tetri[4][5], int len)
 /*
 ** ft_check :
 ** Checks tetri by tetri if the file is valid and make a linked list
-** with a node for each tetri. Return a pointer  to the begining of
+** with a node for each tetri. Return a pointer to the begining of
 ** the list.
 */
 

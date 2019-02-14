@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:43:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/01/31 19:51:02 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/14 14:04:35 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+** ft_lstendadd :
+** Add a node at the end of the list and initialize Next (null) and Previous.
+*/
 
 void			ft_lstendadd1(t_tetris **alst, t_tetris *new)
 {
@@ -89,7 +94,7 @@ t_tetris		*ft_stock(int x, int y, t_tetris *tetris, int nb_sharp)
 
 /*
 ** ft_calculate_size :
-** fill the node given with th height and with of the matching tetri
+** fill the node given with the height and width of the matching tetri
 */
 
 t_tetris		*ft_calculate_size(t_tetris *tetris)

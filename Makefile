@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amamy <amamy@student.42.fr>                +#+  +:+       +#+         #
+#    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/02/10 22:48:46 by amamy            ###   ########.fr        #
+#    Updated: 2019/02/14 12:31:23 by lgaultie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,7 @@ _END=\e[0m
 all: $(NAME)
 
 $(NAME): $(OBJ)
-
-	@printf "Compiling ...:"
+	@printf "compiling... "
 	@cd libft && make
 	$(CC) $(CFLAGS) $(OBJ) libft/libft.a -o $(NAME)
 	@printf "[$(_GREEN)✓$(_END)]\n"
@@ -48,13 +47,13 @@ $(OBJDIR) :
 $(OBJ) : | $(OBJDIR)
 
 clean:
-	@printf "Clean     ...:"
+	@printf "clean... "
 	@cd libft && make clean
 	@rm -rf $(OBJDIR)
 	@printf "[$(_YELLOW)✓$(_END)]\n"
 
 fclean: clean
-	@printf "fclean    ...:"
+	@printf "fclean... "
 	@cd libft && rm -f libft.a
 	@rm -f $(NAME)
 	@printf "[$(_BLUE)✓$(_END)]\n"
