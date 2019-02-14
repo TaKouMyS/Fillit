@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:13:24 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/10 21:00:21 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/14 15:25:53 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** available.
 */
 
-int		ft_verif_all_tetri(int x, int y, t_tetris *tetris, char **map)
+static int	ft_verif_all_tetri(int x, int y, t_tetris *tetris, char **map)
 {
 	if ((map[(tetris->a.y) + y][(tetris->a.x) + x] == '.') \
 		&& (map[(tetris->b.y) + y][(tetris->b.x) + x] == '.') \
@@ -28,7 +28,7 @@ int		ft_verif_all_tetri(int x, int y, t_tetris *tetris, char **map)
 	return (0);
 }
 
-void	ft_place_tetri(int x, int y, t_tetris *tetris, char **map)
+static void	ft_place_tetri(int x, int y, t_tetris *tetris, char **map)
 {
 	tetris->pos.x = x;
 	tetris->pos.y = y;
@@ -38,7 +38,7 @@ void	ft_place_tetri(int x, int y, t_tetris *tetris, char **map)
 	map[(tetris->d.y) + y][(tetris->d.x) + x] = tetris->letter;
 }
 
-int		ft_move_tetri(t_tetris *t, char **map, int map_size)
+int			ft_move_tetri(t_tetris *t, char **map, int map_size)
 {
 	int	ret;
 
@@ -48,9 +48,9 @@ int		ft_move_tetri(t_tetris *t, char **map, int map_size)
 	map[(t->d.y) + (t->pos.y)][(t->d.x) + (t->pos.x)] = '.';
 	ret = ft_chkplace(t, map, ft_coo((((t->pos.x) + 1)), t->pos.y), map_size);
 	return (ret);
-}
+}	
 
-int		ft_chkplace(t_tetris *t, char **map, t_point coo, int map_size)
+int			ft_chkplace(t_tetris *t, char **map, t_point coo, int map_size)
 {
 	while (1)
 	{

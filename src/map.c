@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:12:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/10 20:57:00 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/14 15:17:41 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_sqrt_map(int nb)
+static int	ft_sqrt_map(int nb)
 {
 	int racine;
 
@@ -24,7 +24,7 @@ int		ft_sqrt_map(int nb)
 	return (racine);
 }
 
-void	ft_display_and_free_map(char **map, t_tetris *tetris)
+void		ft_display_and_free_map(char **map, t_tetris *tetris)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ void	ft_display_and_free_map(char **map, t_tetris *tetris)
 	ft_free_list_from_begin(tetris);
 }
 
-int		ft_resize_map(char **map, int map_size)
+int			ft_resize_map(char **map, int map_size)
 {
 	int		x;
 	int		save_x;
@@ -72,7 +72,7 @@ int		ft_resize_map(char **map, int map_size)
 ** allows to build the perfect square with this tetris's number.
 */
 
-int		ft_create_map(size_t len, char **map)
+int			ft_create_map(size_t len, char **map)
 {
 	int		x;
 	int		y;
@@ -93,7 +93,7 @@ int		ft_create_map(size_t len, char **map)
 	return (0);
 }
 
-void	ft_clean_map(char **map)
+void		ft_clean_map(char **map)
 {
 	int	x;
 	int	y;

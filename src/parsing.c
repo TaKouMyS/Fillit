@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:43:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/14 14:04:35 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/02/14 15:18:38 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** Add a node at the end of the list and initialize Next (null) and Previous.
 */
 
-void			ft_lstendadd1(t_tetris **alst, t_tetris *new)
+void				ft_lstendadd1(t_tetris **alst, t_tetris *new)
 {
 	t_tetris	*tmp;
 
@@ -37,7 +37,7 @@ void			ft_lstendadd1(t_tetris **alst, t_tetris *new)
 ** the closest to position 0:0, making it easier to put them on the map
 */
 
-t_tetris		*ft_optimize(t_tetris *tetris)
+static t_tetris		*ft_optimize(t_tetris *tetris)
 {
 	while (tetris->a.x != 0 && tetris->b.x != 0 && tetris->c.x != 0 \
 		&& tetris->d.x != 0)
@@ -64,7 +64,7 @@ t_tetris		*ft_optimize(t_tetris *tetris)
 ** and send it to optimize to calibrate coordonates with the point 0:0.
 */
 
-t_tetris		*ft_stock(int x, int y, t_tetris *tetris, int nb_sharp)
+static t_tetris		*ft_stock(int x, int y, t_tetris *tetris, int nb_sharp)
 {
 	if (nb_sharp < 1 || nb_sharp > 4)
 		return (NULL);
@@ -97,7 +97,7 @@ t_tetris		*ft_stock(int x, int y, t_tetris *tetris, int nb_sharp)
 ** fill the node given with the height and width of the matching tetri
 */
 
-t_tetris		*ft_calculate_size(t_tetris *tetris)
+static t_tetris		*ft_calculate_size(t_tetris *tetris)
 {
 	int		ymax;
 	int		xmax;

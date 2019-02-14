@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 15:11:55 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/14 14:08:46 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/02/14 15:25:49 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 ** if the 5th char isn't a '\n' the function return false as well.
 */
 
-int				ft_check_line(char *str)
+static int		ft_check_line(char *str)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ int				ft_check_line(char *str)
 ** next to each other.
 */
 
-int				ft_check_tetri(char tetri[4][5])
+static int		ft_check_tetri(char tetri[4][5])
 {
 	int	x;
 	int	y;
@@ -75,7 +75,7 @@ int				ft_check_tetri(char tetri[4][5])
 ** This checks if we have '.', '#' ams '\n' at the right place
 */
 
-int				ft_check_line_store(char *str, char tetri[4][5], int len)
+static int		ft_check_line_store(char *str, char tetri[4][5], int len)
 {
 	int		x;
 	int		line;
