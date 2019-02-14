@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:13:24 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/14 15:25:53 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/02/14 15:28:42 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			ft_move_tetri(t_tetris *t, char **map, int map_size)
 	map[(t->d.y) + (t->pos.y)][(t->d.x) + (t->pos.x)] = '.';
 	ret = ft_chkplace(t, map, ft_coo((((t->pos.x) + 1)), t->pos.y), map_size);
 	return (ret);
-}	
+}
 
 int			ft_chkplace(t_tetris *t, char **map, t_point coo, int map_size)
 {
@@ -78,7 +78,7 @@ int			ft_chkplace(t_tetris *t, char **map, t_point coo, int map_size)
 	}
 }
 
-int		ft_solve(t_tetris *t, t_tetris *begin, char **map)
+int			ft_solve(t_tetris *t, t_tetris *begin, char **map)
 {
 	int	ret;
 	int	map_size;

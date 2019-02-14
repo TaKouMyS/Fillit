@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 16:43:40 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/14 15:18:38 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/02/14 15:28:17 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ static t_tetris		*ft_calculate_size(t_tetris *tetris)
 ** fill tetri->next and null
 */
 
-t_tetris		*ft_make_link(char ar[4][5], t_tetris *tetris)
+t_tetris			*ft_make_link(char ar[4][5], t_tetris *tetris)
 {
 	int			x;
 	int			y;
