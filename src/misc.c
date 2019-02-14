@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 20:53:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/10 20:57:16 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/14 12:04:17 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** read 546 characters of file matching the file descriptor given and create
 ** a char *str allocated with just enough memory.
 **
-** Also, it checks ont the 2 lasts chars (before \0), if they are none of '#'
+** Also, it checks on the 2 lasts chars (before \0), if they are none of '#'
 ** or '.' the programme will terminate.
 */
 
@@ -68,7 +68,7 @@ char	**ft_allocate_map(char **map)
 
 /*
 ** ft_coo :
-** Used to inut x and Y in fct which takes t_point var
+** Used to input x and y in fct which takes t_point var
 */
 
 t_point	ft_coo(int x, int y)
