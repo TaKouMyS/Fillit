@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 14:13:24 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/14 15:28:42 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/02/14 16:20:38 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ static int	ft_verif_all_tetri(int x, int y, t_tetris *tetris, char **map)
 	return (0);
 }
 
+/*
+** ft_place_tetri:
+** place the appropriate letter at the right place.
+*/
+
 static void	ft_place_tetri(int x, int y, t_tetris *tetris, char **map)
 {
 	tetris->pos.x = x;
@@ -37,6 +42,11 @@ static void	ft_place_tetri(int x, int y, t_tetris *tetris, char **map)
 	map[(tetris->c.y) + y][(tetris->c.x) + x] = tetris->letter;
 	map[(tetris->d.y) + y][(tetris->d.x) + x] = tetris->letter;
 }
+
+/*
+** ft_move_tetri:
+** Erase the tetris and check its place one block further.
+*/
 
 int			ft_move_tetri(t_tetris *t, char **map, int map_size)
 {
@@ -49,6 +59,12 @@ int			ft_move_tetri(t_tetris *t, char **map, int map_size)
 	ret = ft_chkplace(t, map, ft_coo((((t->pos.x) + 1)), t->pos.y), map_size);
 	return (ret);
 }
+
+/*
+** ft_chkplace:
+** This function tells if: 1/ it could place a tetri, 2/we have to move a tetri,
+** 3/we have to erase the map to make it bigger, 4/we place all the tetris.
+*/
 
 int			ft_chkplace(t_tetris *t, char **map, t_point coo, int map_size)
 {
@@ -77,6 +93,14 @@ int			ft_chkplace(t_tetris *t, char **map, t_point coo, int map_size)
 		++coo.x;
 	}
 }
+
+/*
+** ft_solve:
+** check and place all the tetris.
+** remember: ret = 1/ it could place a tetri, ret = 2/we have to move a tetri,
+** ret = 3/we have to erase the map to make it bigger,
+** ret = 4/we placed all the tetris.
+*/
 
 int			ft_solve(t_tetris *t, t_tetris *begin, char **map)
 {
