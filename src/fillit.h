@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 15:39:34 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/10 20:57:18 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/15 11:34:21 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			ft_lstendadd1(t_tetris **alst, t_tetris *new);
 t_tetris		*ft_exit_check(char *save_str);
 t_tetris		*ft_exit_check2(t_tetris *begin, char *save_str);
 int				ft_create_map(size_t len, char **map);
-void			ft_display_and_free_map(char **map, t_tetris *tetris);
+void			ft_display_and_free_map(char **map, t_tetris *tetris, int fd);
 int				ft_resize_map(char **map, int map_size);
 void			ft_clean_map(char **map);
 int				ft_chkplace(t_tetris *t, char **map, t_point coo, int map_size);

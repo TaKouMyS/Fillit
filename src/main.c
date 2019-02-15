@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 15:12:08 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/14 15:17:06 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/02/15 11:36:19 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ int			main(int argc, char **argv)
 			return (ft_error(map));
 		ft_solve(tetris, tetris, map);
 	}
-	ft_display_and_free_map(map, tetris);
+	ft_display_and_free_map(map, tetris, fd);
 	return (0);
 }

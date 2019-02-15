@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:12:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/14 15:17:41 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/02/15 11:36:25 by lgaultie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_sqrt_map(int nb)
 	return (racine);
 }
 
-void		ft_display_and_free_map(char **map, t_tetris *tetris)
+void		ft_display_and_free_map(char **map, t_tetris *tetris, int fd)
 {
 	int	i;
 
@@ -36,6 +36,7 @@ void		ft_display_and_free_map(char **map, t_tetris *tetris)
 	}
 	ft_free_map(map);
 	ft_free_list_from_begin(tetris);
+	close(fd);
 }
 
 int			ft_resize_map(char **map, int map_size)
