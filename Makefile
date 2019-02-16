@@ -6,17 +6,17 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/02/14 12:31:23 by lgaultie         ###   ########.fr        #
+#    Updated: 2019/02/16 16:47:08 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 CC = @clang
-CFLAGS = -Wall -Werror -Wextra 
+CFLAGS = -Wall -Werror -Wextra
 OBJDIR = obj
 SRCDIR = src
 SRCS =	main.c				\
-		read_and_check.c	\
+		check.c	\
 		parsing.c			\
 		free.c				\
 		map.c				\
