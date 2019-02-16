@@ -3,26 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:12:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/15 11:36:25 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/02/16 16:36:47 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int	ft_sqrt_map(int nb)
-{
-	int racine;
+/*
+** ft_allocate_map :
+** Just allocate the map for 20 char * using memalloc
+** to put '\0' all arround the map.
+*/
 
-	racine = 1;
-	if (nb < 0)
-		return (0);
-	while (racine * racine < nb)
-		racine++;
-	return (racine);
+char		**ft_allocate_map(char **map)
+{
+	int i;
+
+	i = 0;
+	if (!(map = ft_memalloc(sizeof(char *) * 20)))
+		return (NULL);
+	while (i < 20)
+	{
+		if (!(map[i] = ft_memalloc(sizeof(char) * 20)))
+			return (NULL);
+		i++;
+	}
+	return (map);
 }
+
+/*
+** ft_display_and_free_map
+** Displays the final map, free the chained list and close the fd
+*/
 
 void		ft_display_and_free_map(char **map, t_tetris *tetris, int fd)
 {
@@ -38,6 +53,11 @@ void		ft_display_and_free_map(char **map, t_tetris *tetris, int fd)
 	ft_free_list_from_begin(tetris);
 	close(fd);
 }
+
+/*
+** ft_resize_map
+** add ann extra column and an extra line to the map
+*/
 
 int			ft_resize_map(char **map, int map_size)
 {
@@ -93,6 +113,11 @@ int			ft_create_map(size_t len, char **map)
 	}
 	return (0);
 }
+
+/*
+** ft_clean_map
+** Remove all letters from the map and replace them with points
+*/
 
 void		ft_clean_map(char **map)
 {

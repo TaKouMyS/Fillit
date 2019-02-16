@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 15:39:34 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/15 11:34:21 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/02/16 16:08:34 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int				ft_move_tetri(t_tetris *t, char **map, int map_size);
 int				ft_solve(t_tetris *t, t_tetris *begin, char **map);
 void			ft_free_map(char **map);
 char			**ft_allocate_map(char **map);
+int				ft_sqrt_map(int nb);
 
 #endif

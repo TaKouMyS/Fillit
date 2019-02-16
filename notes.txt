@@ -1,4 +1,0 @@
-To do :
-Static functions
-solve.c : ft_move tetri proteger ret
-main.c proteger fct

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 20:53:30 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/14 12:04:17 by lgaultie         ###   ########.fr       */
+/*   Updated: 2019/02/16 16:22:32 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,20 @@ char	*ft_read_file(const int fd)
 }
 
 /*
-** ft_allocate_map :
-** Just allocate the map for 20 char * using memalloc
-** to put '\0' all arround the map.
+** ft_sqrt_map
+** Take a number and return the next perfect root square
 */
 
-char	**ft_allocate_map(char **map)
+int		ft_sqrt_map(int nb)
 {
-	int i;
+	int	racine;
 
-	i = 0;
-	if (!(map = ft_memalloc(sizeof(char *) * 20)))
-		return (NULL);
-	while (i < 20)
-	{
-		if (!(map[i] = ft_memalloc(sizeof(char) * 20)))
-			return (NULL);
-		i++;
-	}
-	return (map);
+	racine = 1;
+	if (nb < 0)
+		return (0);
+	while (racine * racine < nb)
+		racine++;
+	return (racine);
 }
 
 /*
@@ -73,7 +68,7 @@ char	**ft_allocate_map(char **map)
 
 t_point	ft_coo(int x, int y)
 {
-	t_point	coo;
+	t_point		coo;
 
 	coo.x = x;
 	coo.y = y;
