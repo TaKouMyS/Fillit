@@ -6,7 +6,7 @@
 /*   By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 15:39:34 by lgaultie          #+#    #+#             */
-/*   Updated: 2019/02/16 16:08:34 by amamy            ###   ########.fr       */
+/*   Updated: 2019/02/16 17:51:34 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/uio.h>
-# include "../libft/libft.h"
+# include <libft.h>
 
 typedef struct	s_point
 {

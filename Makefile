@@ -6,24 +6,30 @@
 #    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/02/16 16:47:08 by amamy            ###   ########.fr        #
+#    Updated: 2019/02/16 17:59:07 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 CC = @clang
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS += -Wall -Werror -Wextra
 OBJDIR = obj
 SRCDIR = src
-SRCS =	main.c				\
-		check.c	\
-		parsing.c			\
-		free.c				\
+LIBDIR	= libft
+INCDIR	= $(LIBDIR)
+HEAD	= $(SRCDIR)/fillit.h
+
+SRCS =	main.c	\
+		check.c			\
+		parsing.c		\
+		free.c			\
 		map.c				\
-		solve.c				\
+		solve.c			\
 		misc.c
 
+CFLAGS += -I$(INCDIR)
 OBJ = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
+LIB		= $(LIBDIR)/libft.a
 
 _GREEN=\e[32m
 _YELLOW=\e[33m
@@ -32,13 +38,15 @@ _END=\e[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(LIB) $(OBJ)
 	@printf "compiling... "
-	@cd libft && make
-	$(CC) $(CFLAGS) $(OBJ) libft/libft.a -o $(NAME)
+	$(CC) -o $@ $^
 	@printf "[$(_GREEN)✓$(_END)]\n"
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
+$(LIB):
+	@make -C $(LIBDIR)
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEAD)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR) :
@@ -48,13 +56,13 @@ $(OBJ) : | $(OBJDIR)
 
 clean:
 	@printf "clean... "
-	@cd libft && make clean
+	@make -C $(LIBDIR) clean
 	@rm -rf $(OBJDIR)
 	@printf "[$(_YELLOW)✓$(_END)]\n"
 
 fclean: clean
 	@printf "fclean... "
-	@cd libft && rm -f libft.a
+	@make -C $(LIBDIR) fclean
 	@rm -f $(NAME)
 	@printf "[$(_BLUE)✓$(_END)]\n"
 
