@@ -15,7 +15,8 @@ You can try our project with the following commands:
 First, clone the repository and it's dependencies to create the executable
 
 ```
-git clone https://github.com/lgaultie/fillit.git
+git clone https://github.com/lgaultie/fillit
+cd fillit
 make
 ```
 Then, create a file containing tetriminos, or use the "test" file, already containing tetriminos that you can modify.
