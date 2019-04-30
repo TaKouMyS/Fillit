@@ -14,7 +14,7 @@ You can try our project with the following commands:
 
 First, clone the repository and it's dependencies to create the executable
 
-```
+```shell
 git clone https://github.com/lgaultie/fillit
 cd fillit
 make
@@ -23,7 +23,7 @@ Then, create a file containing tetriminos, or use the "test" file, already conta
 
 Finally, run fillit with "test", or your file.
 
-```
+```shell
 ./fillit test
 ```
 
