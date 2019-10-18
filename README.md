@@ -1,12 +1,35 @@
-# fillit
+fillit
+===
 
-Fichier auteur: passe sans ?? metre login1:login2 ??
+## What is fillit?
+*Fillit is a project that let you discover and/or familiarize yourself with a recurring problematic in programming: searching the optimal solution among a huge set of possibilities, in a respectable timing. In this particular project, you will have to find a way to assemble a given Tetriminos set altogether in the smallest possible square.*
 
-check_size : verifie si le fichier est pas trop grand
+---
 
-check_file : verifie si fichier valide (mais pas sa taille)
+Usage
+===
+## Installation
 
-readfile : lis tout le fichier, check si ya pas trop de caracteres
-            puis check le fichier --> mais probleme, le i se réitinialise c'est broken
+You can try our project with the following commands:
 
-newread : lis et fais les verif, pas fini
+First, clone the repository and it's dependencies to create the executable
+
+```shell
+git clone https://github.com/lgaultie/fillit
+cd fillit
+make
+```
+Then, create a file containing tetriminos, or use the "test" file, already containing tetriminos that you can modify.
+
+Finally, run fillit with "test", or your file.
+
+```shell
+./fillit test
+```
+
+---
+Example
+===
+
+![Screen Shot 2019-04-30 at 3 50 52 PM](https://user-images.githubusercontent.com/45974214/56966711-fcde4100-6b5f-11e9-9fd7-b0701f10dd07.png)
+

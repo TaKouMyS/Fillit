@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lgaultie <lgaultie@student.42.fr>          +#+  +:+       +#+         #
+#    By: amamy <amamy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 13:12:42 by lgaultie          #+#    #+#              #
-#    Updated: 2019/02/16 17:59:07 by amamy            ###   ########.fr        #
+#    Updated: 2019/10/18 21:46:52 by amamy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS =	main.c	\
 		check.c			\
 		parsing.c		\
 		free.c			\
-		map.c				\
+		map.c			\
 		solve.c			\
 		misc.c
 

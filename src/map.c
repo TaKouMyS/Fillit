@@ -6,7 +6,7 @@
 /*   By: amamy <amamy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 16:12:45 by amamy             #+#    #+#             */
-/*   Updated: 2019/02/16 16:36:47 by amamy            ###   ########.fr       */
+/*   Updated: 2019/10/18 21:44:43 by amamy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ char		**ft_allocate_map(char **map)
 	}
 	return (map);
 }
-
-/*
-** ft_display_and_free_map
-** Displays the final map, free the chained list and close the fd
-*/
 
 void		ft_display_and_free_map(char **map, t_tetris *tetris, int fd)
 {
